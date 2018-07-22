@@ -17,10 +17,13 @@ font pango:Inconsolata 11
 
 # Auto start
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton --config ~/.compton.conf -b --xrender-sync-fence
+exec --no-startup-id compton --config ~/.compton.conf -b
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id urxvtd
+exec --no-startup-id fcitx
+exec --no-startup-id blueman-applet 
+exec --no-startup-id dunst
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -179,12 +182,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#                 RRGGBBAA
+set $transparent #00000000
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	i3bar_command i3bar -t
+        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+        # status_command i3blocks 
         # status_command $HOME/bin/conky-i3bar 
-	# position       top
+	position       top
 	font pango:Inconsolata 12
 }
 
+gaps inner 10
+gaps outer 0
+smart_gaps on
+for_window [class="^.*"] border pixel 0
