@@ -1,10 +1,10 @@
-Current fonts being used:
+* Current fonts being used:
 
-* Terminal
+** Terminal
 
-Source Code Pro
+`Source Code Pro`
 
-* Editor
+** Editor
 
-Code            : Source Code Pro Mediumn 
-Menu and others : Dialog (odd but good looking)
+`Code            : Source Code Pro Mediumn`
+`Menu and others : Dialog (odd but good looking)`
