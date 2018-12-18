@@ -2,7 +2,9 @@
 
 ### Terminal
 
-`Source Code Pro`
+`Source Code Pro` on most
+
+Recently switched to `Iosevka` on Linux urxvt
 
 ### Editor
 
