@@ -11,3 +11,5 @@ Recently switched to `Iosevka` on Linux urxvt
 `Code            : Source Code Pro Mediumn`
 
 `Menu and others : Dialog (odd but good looking)`
+
+
