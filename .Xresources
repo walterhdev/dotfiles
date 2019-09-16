@@ -38,3 +38,4 @@ URxvt*font: xft:Inconsolata:size=11
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
 URxvt.perl-ext-common: default,selection-to-clipboard,clipboard
+URxvt.scrollBar: false
