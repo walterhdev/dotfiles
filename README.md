@@ -2,12 +2,12 @@
 
 ### Terminal
 
-`Source Code Pro` on most
+`Source Code Pro for Powerline` on most (Mac usually)
 
 Recently switched to `Iosevka` on Linux urxvt
 
 ### Editor
 
-`Code            : Source Code Pro Mediumn`
+`Code            : Fira Code Retina`
 
 `Menu and others : Dialog (odd but good looking)`
