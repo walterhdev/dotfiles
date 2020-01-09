@@ -2,12 +2,12 @@
 
 ### Terminal
 
-`Source Code Pro for Powerline` on most (Mac usually)
+`Source Code Pro for Powerline` on most (Mac usually) /w alacritty
 
-Recently switched to `Iosevka` on Linux urxvt
+Recently switched to `Iosevka` on Linux urxvt / termite
 
 ### Editor
 
-`Code            : Fira Code Retina`
+`Code            : Hasklig`
 
 `Menu and others : Dialog (odd but good looking)`
