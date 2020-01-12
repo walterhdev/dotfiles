@@ -11,3 +11,7 @@ Recently switched to `Iosevka` on Linux urxvt
 `Code            : Fira Code Retina`
 
 `Menu and others : Dialog (odd but good looking)`
+
+### Remove curl alias on Windows
+
+https://superuser.com/questions/883914/how-do-i-permanently-remove-a-default-powershell-alias
