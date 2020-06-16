@@ -15,11 +15,18 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'morhetz/gruvbox'
+"Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+Plug 'dyng/ctrlsf.vim'
+
 " Initialize plugin system
 call plug#end()
+
+let g:go_metalinter_autosave=1
 
 inoremap jk <ESC>
 nmap <C-n> :NERDTreeToggle<CR>
@@ -73,7 +80,11 @@ set shiftwidth=2
 " always uses spaces instead of tab characters
 set expandtab
 
+set path+=**
 colorscheme gruvbox
+"set background=dark
+"colorscheme PaperColor
+
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
@@ -101,8 +112,11 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
-  \ 'coc-rls', 
+  \ 'coc-go', 
   \ ]
+
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
 " from readme
 " if hidden is not set, TextEdit might fail.
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
@@ -116,11 +130,11 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -224,5 +238,30 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Turn on mouse support
-set mouse=a
+" Increase maximum number of signs for gitgutter
+let g:gitgutter_max_signs=9999
+
+set mouse=nv
+
+tnoremap <Esc> <C-\><C-n>
+
+" ctrlsf
+nmap     <C-I>f <Plug>CtrlSFPrompt
+vmap     <C-I>f <Plug>CtrlSFVwordPath
+vmap     <C-I>F <Plug>CtrlSFVwordExec
+nmap     <C-I>n <Plug>CtrlSFCwordPath
+nmap     <C-I>p <Plug>CtrlSFPwordPath
+nnoremap <C-I>o :CtrlSFOpen<CR>
+nnoremap <C-I>t :CtrlSFToggle<CR>
+inoremap <C-I>t <Esc>:CtrlSFToggle<CR>
+
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_auto_focus = {
+    \ "at": "done",
+    \ "duration_less_than": 1000
+    \ }
+let g:ctrlsf_auto_close = {
+    \ "normal" : 1,
+    \ "compact": 1
+    \}
+let g:ctrlsf_default_view_mode = 'compact'
