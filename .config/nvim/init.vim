@@ -15,8 +15,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
 
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+
+Plug 'dyng/ctrlsf.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -64,7 +70,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-set relativenumber
+set number relativenumber
 
 set smarttab
 set cindent
@@ -73,7 +79,11 @@ set shiftwidth=2
 " always uses spaces instead of tab characters
 set expandtab
 
-colorscheme gruvbox
+if (has("termguicolors"))
+   set termguicolors
+endif
+"colorscheme night-owl 
+colorscheme gruvbox 
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
@@ -101,7 +111,6 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
-  \ 'coc-rust-analyzer', 
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
@@ -224,5 +233,23 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Turn on mouse support
 set mouse=a
+
+tnoremap <Esc> <C-\><C-n>
+
+let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
+let g:ctrlsf_auto_close = {
+    \ "compact": 1
+    \}
+
+nmap     <C-i>f <Plug>CtrlSFPrompt
+vmap     <C-i>f <Plug>CtrlSFVwordPath
+vmap     <C-i>F <Plug>CtrlSFVwordExec
+nmap     <C-i>n <Plug>CtrlSFCwordPath
+nmap     <C-i>p <Plug>CtrlSFPwordPath
+nnoremap <C-i>o :CtrlSFOpen<CR>
+nnoremap <C-i>t :CtrlSFToggle<CR>
+inoremap <C-i>t <Esc>:CtrlSFToggle<CR>
